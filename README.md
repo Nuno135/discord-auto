@@ -2,6 +2,7 @@
 Discord-auto is an easy way to create your discord bot using discord.js! Just execute the script and you're all setup.
 Follow the steps below to create your bot.
 <h1><b>Guide</b></h1>
+
 ## NodeJS
 First of all, make sure you've installed NodeJS and npm.
 
