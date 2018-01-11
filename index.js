@@ -35,6 +35,7 @@ configStream.write('\n}');
 configStream.end();
 
 
+rl.write('\nPlease make sure you have created your app. If you haven\'t, you can do so at:\nhttps://discordapp.com/developers/applications/me\nPlease answer the following questions.\n\n');
 rl.question('What would you like the prefix to be?\n', (answer) => {
     fs.readFile('./config.json', 'utf8', function (err,data) {
       if (err) {
@@ -58,7 +59,7 @@ rl.question('What would you like the prefix to be?\n', (answer) => {
              if (err) return console.log(err);
           });
         });
-      rl.write('Your client has been successfully setup. Type \nnode client.js\nto run the client.\nNote: You need to have NodeJS installed for this to work. \nIf you haven\'t already installed it, please do so here:\nnodejs.org/en/download/\n Have fun!');
+      rl.write('\nYour client has been successfully setup. Type \nnode client.js\nto run the client.\nNote: You need to have NodeJS installed for this to work. \nIf you haven\'t already installed it, please do so here:\nnodejs.org/en/download/\n Have fun!\n\n');
       rl.close();
     });
     //
