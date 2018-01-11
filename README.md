@@ -3,7 +3,7 @@ Discord-auto is an easy way to create your discord bot using discord.js! Just ex
 Follow the steps below to create your bot.
 <h1><b>Guide</b></h1>
 
-## NodeJS
+<h1><b>NodeJS Setup</b></h1>
 First of all, make sure you've installed NodeJS and npm.
 
 ## Install discord-auto
@@ -29,3 +29,11 @@ Paste this into cmd:
 node app.js
 ```
 <h1>You're all set to go!</h1>
+
+<h1><b>PHP Setup</b></h1>
+If you want to use the PHP setup, the steps are pretty simple:
+
+Install PHP
+Execute the setup.php using 'php setup.php' from your console and enjoy your first setup of your Discord bot!
+
+Credits: Dev3211(PHP version), Nuno135(NodeJS version).
