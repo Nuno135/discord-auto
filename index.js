@@ -27,7 +27,7 @@ botStream.write("\nvar client = new Discord.Client();");
 botStream.write("\nvar config = require('./config.json');");
 botStream.write("\nvar prefix = config.client.prefix");
 botStream.write("\n\nclient.on('ready', () => {");
-botStream.write("\n    console.log(`I am ready on ${client.guilds.size}`);");
+botStream.write("\n    console.log(`I am ready on ${client.guilds.size} Servers.`);");
 botStream.write("\n});");
 botStream.write("\n\nclient.on('message', message => {");
 botStream.write("\n   if (message.content === prefix + 'ping') {");
