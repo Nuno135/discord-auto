@@ -1,6 +1,15 @@
+module.exports = function(auto) {
+
 const fs = require('fs');
 
 var shell = require('shelljs');
+
+var clear = require('clear');
+
+var chalk = require('chalk');
+
+var figlet = require('figlet');
+
 
 var readline = require('readline');
 
@@ -9,17 +18,29 @@ var rl = readline.createInterface({
     output: process.stdout
 });
 
+
+
 function modules() {
-  rl.write(`\nInstalling NODEJS V8(Ignore this if your operating system is not Linux.)\n`);
-  shell.exec('curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash');
-  shell.exec('sudo apt-get install -y nodejs');
   rl.write('\nInstalling DiscordJS module(Ignore this if your operating system is not Linux.)\n');
   shell.exec('npm install discord.js');
 }
 
+clear();
+console.log(
+  chalk.yellow(
+    figlet.textSync('D-Auto', { horizontalLayout: 'full' })
+  )
+);
+
+rl.question('Do you want to continue? \n', (answer) => {
+  if (answer.match(/^n(o)?$/i)) rl.close();
+ 
+    if (answer.match(/^y(es)?$/i)) {
+
+
 modules();
 
-rl.write('\n--------Creating the  files--------\n');
+rl.write('\n--------Creating the files--------\n');
 
 const botStream = fs.createWriteStream("client.js");
 botStream.write("var Discord = require('discord.js');");
@@ -83,12 +104,6 @@ rl.question('What would you like the prefix to be?\n', (answer) => {
         });
     });
 });
-
-
-
-rl.on('SIGINT', () => {
-  rl.question('Are you sure you want quit the process? ', (answer) => {
-    if (answer.match(/^y(es)?$/i)) rl.close();
-  });
+}
 });
-
+};
