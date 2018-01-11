@@ -1,4 +1,6 @@
-var fs = require('fs');
+const fs = require('fs');
+
+var shell = require('shelljs');
 
 var readline = require('readline');
 
@@ -6,6 +8,18 @@ var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
+
+function modules() {
+  rl.write(`\nInstalling NODEJS V8(Ignore this if your operating system is not Linux.)\n`);
+  shell.exec('curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash');
+  shell.exec('sudo apt-get install -y nodejs');
+  rl.write('\nInstalling DiscordJS module(Ignore this if your operating system is not Linux.)\n');
+  shell.exec('npm install discord.js');
+}
+
+modules();
+
+rl.write('\n--------Creating the  files--------\n');
 
 const botStream = fs.createWriteStream("client.js");
 botStream.write("var Discord = require('discord.js');");
@@ -34,8 +48,12 @@ configStream.write('\n   }');
 configStream.write('\n}');
 configStream.end();
 
+rl.write('\nSuccessfully created the files.\n');
+
+
 
 rl.write('\nPlease make sure you have created your app. If you haven\'t, you can do so at:\nhttps://discordapp.com/developers/applications/me\nPlease answer the following questions.\n\n');
+rl.write('\n--------Configuration Setup--------\n');
 rl.question('What would you like the prefix to be?\n', (answer) => {
     fs.readFile('./config.json', 'utf8', function (err,data) {
       if (err) {
@@ -59,9 +77,18 @@ rl.question('What would you like the prefix to be?\n', (answer) => {
              if (err) return console.log(err);
           });
         });
-      rl.write('\nYour client has been successfully setup. Type \nnode client.js\nto run the client.\nNote: You need to have NodeJS installed for this to work. \nIf you haven\'t already installed it, please do so here:\nnodejs.org/en/download/\n Have fun!\n\n');
-      rl.close();
+        rl.question('Would you like to start the script? \n', (answer) => {
+          if (answer.match(/^y(es)?$/i)) shell.exec('node client.js');
+          if (answer.match(/^n(o)?$/i)) rl.close();
+        });
     });
-    //
+});
+
+
+
+rl.on('SIGINT', () => {
+  rl.question('Are you sure you want quit the process? ', (answer) => {
+    if (answer.match(/^y(es)?$/i)) rl.close();
+  });
 });
 
