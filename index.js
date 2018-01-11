@@ -1,18 +1,11 @@
 module.exports = function(auto) {
 
-    const fs = require('fs');
-
+    var fs = require('fs');
     var shell = require('shelljs');
-
     var clear = require('clear');
-
     var chalk = require('chalk');
-
     var figlet = require('figlet');
-
-
     var readline = require('readline');
-
     var rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout
