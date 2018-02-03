@@ -1,9 +1,9 @@
-module.exports = function(auto) {
-
+module.exports = function() {
+    
     var fs = require('fs');
     var shell = require('shelljs');
     var clear = require('clear');
-    var chalk = require('chalk');
+    var log = require('js-logs');
     var figlet = require('figlet');
     var readline = require('readline');
     var rl = readline.createInterface({
@@ -14,20 +14,20 @@ module.exports = function(auto) {
 
 
     function modules() {
-        rl.write('\nInstalling DiscordJS module(Ignore this if your operating system is not Linux.)\n');
+        rl.write('\nInstalling DiscordJS module. \n(Ignore this if your operating system is not Linux.)\n');
         shell.exec('npm install discord.js');
     }
 
     clear();
     console.log(
-        chalk.yellow(
+        log.yellow(
             figlet.textSync('D-Auto', {
                 horizontalLayout: 'full'
             })
         )
     );
 
-    rl.question('Do you want to continue? \n', (answer) => {
+    rl.question('Do you want to continue? (y/n) \n', (answer) => {
         if (answer.match(/^n(o)?$/i)) rl.close();
 
         if (answer.match(/^y(es)?$/i)) {
