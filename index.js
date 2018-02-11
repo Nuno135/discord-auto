@@ -1,7 +1,7 @@
 module.exports = function() {
     
     var fs = require('fs');
-    var shell = require('shelljs');
+    var shell = require('shelli');
     var clear = require('clear');
     var log = require('js-logs');
     var figlet = require('figlet');
