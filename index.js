@@ -2,7 +2,6 @@ module.exports = function() {
     
     var fs = require('fs');
     var shell = require('shelli');
-    var clear = require('clear');
     var log = require('js-logs');
     var figlet = require('figlet');
     var readline = require('readline');
@@ -18,7 +17,7 @@ module.exports = function() {
         shell.exec('npm install discord.js');
     }
 
-    clear();
+log.clear();
     console.log(
         log.yellow(
             figlet.textSync('D-Auto', {
@@ -93,7 +92,7 @@ module.exports = function() {
                             if (err) return console.log(err);
                         });
                     });
-                    rl.question('Would you like to start the script? \n', (answer) => {
+                    rl.question('Would you like to start the script? (y/n)\n', (answer) => {
                         if (answer.match(/^y(es)?$/i)) shell.exec('node client.js');
                         if (answer.match(/^n(o)?$/i)) rl.close();
                     });
